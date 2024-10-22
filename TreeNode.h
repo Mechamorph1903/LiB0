@@ -5,6 +5,7 @@ using std::string;
 
 class TreeNode {
 public:
+	int height;
 	TreeNode* left;
 	TreeNode* right;
 	TreeNode* parent;
