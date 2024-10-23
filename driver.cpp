@@ -143,7 +143,9 @@ void searchBook(AVLTree& library) {
 		cout << "1. By ISBN" << endl;
 		cout << "2. By Year" << endl;
 		cout << "3. Exit to Main Menu" << endl;
+		cout << "Enter your choice: ";
 		cin >> choice;
+		cout << "\n";
 		cin.clear();
 		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
@@ -155,8 +157,8 @@ void searchBook(AVLTree& library) {
 			cout << "Enter ISBN: ";
 			cin >> ISBN;
 
-			while (ISBN < 1000000000) {
-				cout << "Invalid ISBN. Please enter a valid ISBN (greater than 9 digits)." << endl;
+			while (ISBN < 0) {
+				cout << "Invalid ISBN. Please enter a valid ISBN." << endl;
 				cin.clear();
 				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 				cout << "Enter ISBN: ";
