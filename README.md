@@ -9,14 +9,14 @@ Description:
 Allows users to add a new book by entering its title, author, and ISBN. The book is stored within the AVL Tree, ensuring balanced insertion and optimal search times.
 Technical Requirement:
 Implements AVL Tree insertion.
-2. Remove Book
+2. Remove Book (Not Implemented Yet)
 Description:
 Enables users to remove a book from the catalog using its ISBN or other identifiers.
 Technical Requirement:
 Implements AVL Tree deletion.
 3. Search Book
 Description:
-Users can search for books by ISBN, title, or author. The AVL Tree ensures efficient searching even with large datasets.
+Users can search for books by ISBN or year. The AVL Tree ensures efficient searching even with large datasets.
 Technical Requirement:
 Implements AVL Tree search functionality.
 4. Display All Books
@@ -24,7 +24,7 @@ Description:
 Displays all books in the catalog, sorted by title or ISBN. The AVL Tree's inherent order is utilized to ensure the books are displayed in ascending order.
 Technical Requirement:
 Implements AVL Tree traversal in sorted order.
-5. Update Book
+5. Update Book (Not Implemented Yet)
 Description:
 Allows users to update details of a book (e.g., title, author, publication year) while maintaining its position in the AVL Tree.
 Technical Requirement:
