@@ -1,10 +1,13 @@
 #pragma once
 #include <iostream>
+#include <vector>
+
 #include "TreeNode.h"
 
 using std::cout;
 using std::cin;
 using std::endl;
+using std::vector;
 
 class AVLTree {
 	private:
@@ -57,12 +60,26 @@ class AVLTree {
             }
         }
 
-		bool searchBookbyISBN(int ISBN) {
+		vector<TreeNode*> searchBookByISBN(int ISBN) {
+			vector<TreeNode*> result;
+
 			if (root == nullptr) {
-				return false;
+				return result;
 			}
 			else {
 				return searchBookByISBN(ISBN, root);
+			}
+
+		};
+
+		vector<TreeNode*> searchBookbyYear(int year) {
+			vector<TreeNode*> result;
+
+			if (root == nullptr) {
+				return result;
+			}
+			else {
+				return searchBookByYear(year, root);
 			}
 
 		};
@@ -73,9 +90,19 @@ class AVLTree {
 				return;
 			}
 			else {
-				displayAllBooks(root);
+				int counter = 1;
+				displayAllBooks(root, counter);
 			}
-		}
+		};
+
+		void printBookdetails(TreeNode* node) {
+			cout << "Title: " << node->title << endl
+				<< "\t" << "Author: " << node->author << endl
+				<< "\t" << "Publication Year: " << node->year << endl
+				<< "\t" << "ISBN: " << node->ISBN << endl
+				<< "\n";
+		};
+
 	private:
 		//utility functions
 
@@ -171,12 +198,14 @@ class AVLTree {
 		}
 
 
-		bool searchBookByISBN(int ISBN, TreeNode* node) {
+		vector<TreeNode*> searchBookByISBN(int ISBN, TreeNode* node) {
+			vector<TreeNode*> result;
 			if (node == nullptr) {
-				return false;
+				return result;
 			}
 			if (node->ISBN == ISBN) {
-				return true;
+				result.push_back(node);
+				return result;
 			}
 			else if (ISBN < node->ISBN) {
 				return searchBookByISBN(ISBN, node->left);
@@ -186,12 +215,32 @@ class AVLTree {
 			}
 		};
 
-		void displayAllBooks(TreeNode* node) {
+
+		vector<TreeNode*> searchBookByYear(int year, TreeNode* node) {
+			vector<TreeNode*> result;
+			if (node == nullptr) {
+				return result;
+			}
+			if (node->year == year) {
+				result.push_back(node);
+			}
+			vector<TreeNode*> leftResult = searchBookByYear(year, node->left);
+			vector<TreeNode*> rightResult = searchBookByYear(year, node->right);
+			result.insert(result.end(), leftResult.begin(), leftResult.end());
+			result.insert(result.end(), rightResult.begin(), rightResult.end());
+			return result;
+		};
+
+		void displayAllBooks(TreeNode* node, int &counter) {
 			if (node == nullptr){
 				return;
 			}
-			cout << "Title: " << node->title << endl<< "\t" << "Author: " << node->author << endl << "Publication Year: " << node->year << endl << "ISBN: " << node->ISBN << endl << "\n";
-			displayAllBooks(node->left);
-			displayAllBooks(node->right);
+			displayAllBooks(node->left, counter);
+			cout << counter << ". Title: " << node->title << endl
+				<< "\t" << "Author: " << node->author << endl
+				<< "\t" << "Publication Year: " << node->year << endl
+				<< "\t" << "ISBN: " << node->ISBN << endl
+				<< "\n";			counter++;
+			displayAllBooks(node->right, counter);
 		};
 };
