@@ -1,4 +1,5 @@
-Lib0: Library Book Management System
+**Lib0: Library Book Management System**
+
 Project Overview
 The Library Book Management System is designed to efficiently manage a library's book collection, addressing the challenges of organizing large catalogs and providing quick access to book details such as titles, authors, and ISBN numbers. This project leverages an AVL Tree, a self-balancing binary search tree, to ensure that operations like searching, adding, and removing books are performed efficiently, even with a large dataset.
 <img src="videoWalkthrough.gif" alt="Video Walkthrough"/>
