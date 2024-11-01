@@ -58,13 +58,34 @@ void runLibrary(int& userChoice, AVLTree& library) {
 		}
 		else if (userChoice == 4) {
 			cout << "Updating a book..." << endl;
-			/*updateBook(library);*/
+			int isbn;
+			cout << "Enter ISBN of the book you want to update: ";
+			cin >> isbn;
+			library.updateBook(isbn);
 			cout << "\n";
 			cout << "\n";
 		}
 		else if (userChoice == 5) {
 			cout << "Deleting a book..." << endl;
-			/*deleteBook(library);*/
+			cout << "Enter ISBN of the book you want to delete: ";
+			int isbn;
+			cin >> isbn;
+			cout << "Found book!";
+			vector<TreeNode*>result = library.searchBookByISBN(isbn);
+			for (TreeNode* book : result) {
+				library.printBookdetails(book);
+			}
+			cout << "Are you sure you want to delete this book? (Y/N): ";
+			char choice;
+			cin >> choice;
+			choice = toupper(choice);
+			if (choice == 'Y') {
+				library.deleteBook(isbn);
+				cout << "Book deleted successfully!" << endl;
+			}
+			else {
+				cout << "Book deletion cancelled." << endl;
+			}
 			cout << "\n";
 			cout << "\n";
 		}
